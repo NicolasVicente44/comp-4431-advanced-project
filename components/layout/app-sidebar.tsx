@@ -1,6 +1,6 @@
 "use client";
 
-import { Home, LogOut, X } from "lucide-react";
+import { Home, LogOut } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -12,7 +12,6 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarRail,
-  useSidebar,
 } from "@/components/ui/sidebar";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
@@ -21,41 +20,27 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
 
 export function AppSidebar() {
-  const { setOpenMobile, isMobile } = useSidebar();
-
   return (
     <Sidebar collapsible="icon">
       {/* App Logo & Title */}
-      <SidebarHeader>
-        <div className="flex items-center justify-between">
-          <SidebarMenu>
-            <SidebarMenuItem>
-              <SidebarMenuButton size="lg" asChild>
-                <a href="/dashboard">
+      <SidebarHeader className="h-14 flex items-center justify-center p-0 px-2">
+        <div className="flex items-center justify-between w-full group-data-[collapsible=icon]:justify-center">
+          <SidebarMenu className="group-data-[collapsible=icon]:items-center group-data-[collapsible=icon]:w-auto">
+            <SidebarMenuItem className="group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center">
+              <SidebarMenuButton size="lg" asChild className="group-data-[collapsible=icon]:!size-8 group-data-[collapsible=icon]:!p-0 group-data-[collapsible=icon]:justify-center">
+                <a href="/dashboard" className="group-data-[collapsible=icon]:justify-center">
                   <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground font-bold">
                     A
                   </div>
-                  <div className="flex flex-col gap-0.5 leading-none">
+                  <div className="flex flex-col gap-0.5 leading-none group-data-[collapsible=icon]:hidden">
                     <span className="font-semibold">App Name</span>
                   </div>
                 </a>
               </SidebarMenuButton>
             </SidebarMenuItem>
           </SidebarMenu>
-          {isMobile && (
-            <Button
-              variant="ghost"
-              size="icon"
-              className="size-8"
-              onClick={() => setOpenMobile(false)}
-            >
-              <X className="size-4" />
-              <span className="sr-only">Close</span>
-            </Button>
-          )}
         </div>
       </SidebarHeader>
 
